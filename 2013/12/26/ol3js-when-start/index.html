@@ -3,20 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>挖坑记 | 谢小漫</title>
+  <title>开始ol3需要注意的 | 谢小漫</title>
   <meta name="author" content="谢小漫">
   
-  <meta name="description" content="本blog使用Hexo.相关的建立方法请自行google一下。
-Hexo是个不错的程序，正如其自身的介绍:
-
-A fast, simple &amp; powerful blog framework, powered by Node.js.
-
-安装Hexo的过程，也是对Node.js的了解，Node">
+  <meta name="description" content="Openlayers 3简称ol3确实是不错，架构方面好像好了很多，调整了projection的转换。基于Google的Closure Library，贡献代码的入门难度加大了。代码的质量和输出代码的体积方面好像确实小了很多。
+截至到本文之前，API Docs奇差，网上浏览就有找不到北的感觉。还有没">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="挖坑记"/>
+  <meta property="og:title" content="开始ol3需要注意的"/>
   <meta property="og:site_name" content="谢小漫"/>
 
   
@@ -57,61 +53,18 @@ A fast, simple &amp; powerful blog framework, powered by Node.js.
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-12-24T11:42:17.000Z"><a href="/2013/12/24/dig-a-blog/">12月 24 2013</a></time>
+        <time datetime="2013-12-26T05:13:17.000Z"><a href="/2013/12/26/ol3js-when-start/">12月 26 2013</a></time>
       
       
   
-    <h1 class="title">挖坑记</h1>
+    <h1 class="title">开始ol3需要注意的</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>本blog使用<a href="https://github.com/tommy351/hexo/" target="_blank">Hexo</a>.<br>相关的建立方法请自行google一下。</p>
-<p>Hexo是个不错的程序，正如其自身的介绍:</p>
-<blockquote>
-<p>A fast, simple &amp; powerful blog framework, powered by Node.js.</p>
-</blockquote>
-<p>安装Hexo的过程，也是对Node.js的了解，Node.js确实足够的简单，一个.exe文件。<br>还有包管理npm，官网上的<a href="http://nodejs.org/dist/" target="_blank">release files</a>就提供了node.exe的下载和npm包管理的文件包。</p>
-<p>建立文件夹，然后解压node.exe，解压npm-1.3.9.zip到主目录下。<br>目录结构: D:\nodejs\</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre><span class="title">node</span>.exe
-<span class="title">npm</span>.cmd
-<span class="title">node_modules</span>\
-</pre></td></tr></table></figure>
-
-<p>设置一下npm的一下配置目录：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>npm config set prefix "D:<span class="command">\nodejs</span><span class="command">\npm</span>-global"
-npm config set cache "D:<span class="command">\nodejs</span><span class="command">\npm</span>-cache"
-</pre></td></tr></table></figure>
-
-<p>设置一下Path的环境变量，增加一下D:\nodejs\node-global;D:\nodejs\;就可以了。</p>
-<p>设置完成后，Hexo的安装就非常简单了:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">npm</span> install -g hexo
-</pre></td></tr></table></figure>
-
-<p>然后就是新的一个cmd窗口，建立目录blog1，主要命令是:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre><span class="title">hexo</span> init <span class="comment">#建立网站</span>
-hexo generate <span class="comment">#生成内容</span>
-hexo server <span class="comment">#预览网站, 打开http://localhost:4000</span>
-</pre></td></tr></table></figure>
-
-<p>配置文件在_config.yml，相关配置请自行google。<br>需要配置github的地址等信息。<br>发布命令是:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> deploy
-</pre></td></tr></table></figure>
-
-<p>然后输入github帐号和密码, 我的windows下不会提示输入，摸瞎输入后，成功部署。<br>CNAME的域名绑定的话，就是在deploy之前，创建一个CNAME文件，写入域名，放到public目录下。<br>到域名DNS设置里边设置一个CNAME指向你的x.github.io。</p>
-<p>然后就是要熟悉一下Markdown的语法了。</p>
-<p>挖坑记录完毕。</p>
+        <p>Openlayers 3简称<a href="http://ol3js.org" target="_blank">ol3</a>确实是不错，架构方面好像好了很多，调整了projection的转换。<br>基于Google的<a href="http://code.google.com/p/closure-library/" target="_blank">Closure Library</a>，贡献代码的入门难度加大了。<br>代码的质量和输出代码的体积方面好像确实小了很多。</p>
+<p>截至到本文之前，API Docs奇差，网上浏览就有找不到北的感觉。<br>还有没有支持IE7/IE8。<br>弄了一些基本功能之后，才发现没有支持IE7，看来还要花点时间切回Openlayers2了。<br>估计还是可以在移动设备上尝试一下ol3的。</p>
 
       
     </div>
@@ -121,7 +74,7 @@ hexo server <span class="comment">#预览网站, 打开http://localhost:4000</sp
         
   
   <div class="tags">
-    <a href="/tags/hexo/">hexo</a>
+    <a href="/tags/ol3/">ol3</a>, <a href="/tags/GIS/">GIS</a>
   </div>
 
         

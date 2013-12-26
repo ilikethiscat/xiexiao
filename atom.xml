@@ -3,13 +3,25 @@
   <title><![CDATA[谢小漫]]></title>
   <link href="http://xiexiao.com/atom.xml" rel="self"/>
   <link href="http://xiexiao.com"/>
-  <updated>2013-12-25T15:43:39.964Z</updated>
+  <updated>2013-12-26T04:11:05.357Z</updated>
   <id>http://xiexiao.com/</id>
   <author>
     <name><![CDATA[谢小漫]]></name>
     <email><![CDATA[ilikethiscat@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[开始ol3需要注意的]]></title>
+    <link href="http://xiexiao.com/2013/12/26/ol3js-when-start/"/>
+    <id>http://xiexiao.com/2013/12/26/ol3js-when-start/</id>
+    <published>2013-12-26T05:13:17.000Z</published>
+    <updated>2013-12-26T04:10:23.355Z</updated>
+    <content type="html"><![CDATA[<p>Openlayers 3简称<a href="http://ol3js.org" target="_blank">ol3</a>确实是不错，架构方面好像好了很多，调整了projection的转换。<br>基于Google的<a href="http://code.google.com/p/closure-library/" target="_blank">Closure Library</a>，贡献代码的入门难度加大了。<br>代码的质量和输出代码的体积方面好像确实小了很多。</p>
+<p>截至到本文之前，API Docs奇差，网上浏览就有找不到北的感觉。<br>还有没有支持IE7/IE8。<br>弄了一些基本功能之后，才发现没有支持IE7，看来还要花点时间切回Openlayers2了。<br>估计还是可以在移动设备上尝试一下ol3的。</p>
+]]></content>
+    <category scheme="http://xiexiao.com/tags/ol3/" term="ol3"/>
+    <category scheme="http://xiexiao.com/tags/GIS/" term="GIS"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[最小化安装CentOS]]></title>
     <link href="http://xiexiao.com/2013/12/25/minimal-centos/"/>
