@@ -3,13 +3,25 @@
   <title><![CDATA[谢小漫]]></title>
   <link href="http://xiexiao.com/atom.xml" rel="self"/>
   <link href="http://xiexiao.com"/>
-  <updated>2013-12-27T03:08:48.693Z</updated>
+  <updated>2013-12-27T15:45:48.981Z</updated>
   <id>http://xiexiao.com/</id>
   <author>
     <name><![CDATA[谢小漫]]></name>
     <email><![CDATA[ilikethiscat@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[2013最后一场夜球]]></title>
+    <link href="http://xiexiao.com/2013/12/27/football-end-2013/"/>
+    <id>http://xiexiao.com/2013/12/27/football-end-2013/</id>
+    <published>2013-12-27T15:33:17.000Z</published>
+    <updated>2013-12-27T15:40:38.980Z</updated>
+    <content type="html"><![CDATA[<p>断断续续的，在附近小区的篮球场踢了几年的足球。<br>这个月休战了很多场，每周两场。<br>今晚还好，不是很冷。</p>
+<p>想写一个叫《当我谈路测分析时，我谈什么》的小文，先订在这儿，慢慢打打草稿。<br>估计得有几篇小文才能把这个事情说好。<br>虽说在做电信路测系统的公司呆了几年，感觉是越做越是做不好。<br>心里有很多的念头，估计还是得写写，总结一下才行。<br>大体能说的不是具体的如何做路测，而是路测得到的数据，分析的时候要考虑什么基础的知识。<br>不会涉及专业的电信网络知识：比如层三信令怎么破，这些个专业的知识我也不太懂。<br>在我看来，路测数据就是一堆时间纬度和空间纬度上的点的度量集合。</p>
+<p>好吧，慢慢在本子上打草稿，农历新年前后鼓捣鼓捣。</p>
+]]></content>
+    <category scheme="http://xiexiao.com/tags/足球/" term="足球"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[开始ol3需要注意的]]></title>
     <link href="http://xiexiao.com/2013/12/26/ol3js-when-start/"/>
