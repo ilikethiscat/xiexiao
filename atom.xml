@@ -3,13 +3,30 @@
   <title><![CDATA[谢小漫]]></title>
   <link href="http://xiexiao.com/atom.xml" rel="self"/>
   <link href="http://xiexiao.com"/>
-  <updated>2013-12-27T15:45:48.981Z</updated>
+  <updated>2013-12-28T06:33:13.621Z</updated>
   <id>http://xiexiao.com/</id>
   <author>
     <name><![CDATA[谢小漫]]></name>
     <email><![CDATA[ilikethiscat@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[小说工匠]]></title>
+    <link href="http://xiexiao.com/2013/12/28/craftsman-2013/"/>
+    <id>http://xiexiao.com/2013/12/28/craftsman-2013/</id>
+    <published>2013-12-28T06:33:20.000Z</published>
+    <updated>2013-12-28T06:32:57.101Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>是不是一个优秀的小说家我不敢讲，但我要强调我一定是个非常优秀的小说工匠。工匠不对自己的作品形成美学，这就是没有天良了。——张大春  </p>
+</blockquote>
+<p>《小说稗类》是本不错的书。偶尔的几个晚上翻过几页，慢慢的品着里边的文字。虽然书里的部分字词，很陌生和比较难理解。</p>
+<p>这段时间不断抽空看小说和一些杂书，都是几本同时开动。《大秦帝国》看了三分之二，《代码的未来》临睡前翻十几页，《小说稗类》也抽空翻几页。</p>
+<p>有时看着看着，就慢慢的联想着编程那点事，比如上边引用的文字在《小说稗类》腰封上。<br>写代码其实也是同样的道理，要从代码工人上升到工匠，就必须不断的学习和观察钻研，对自己的作品形成美学，不能只是停留在一个点上。<br>要做把自己定位在是一个工匠上，才能把代码写好，产品做好。</p>
+<p>摩尔定律：预计每18个月，芯片的性能会提高一倍。也就需要不断的进行程序代码的改进改良。</p>
+]]></content>
+    <category scheme="http://xiexiao.com/tags/小说稗类/" term="小说稗类"/>
+    <category scheme="http://xiexiao.com/tags/小说工匠/" term="小说工匠"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[2013最后一场夜球]]></title>
     <link href="http://xiexiao.com/2013/12/27/football-end-2013/"/>
