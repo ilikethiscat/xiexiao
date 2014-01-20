@@ -3,13 +3,33 @@
   <title><![CDATA[谢小漫]]></title>
   <link href="http://xiexiao.com/atom.xml" rel="self"/>
   <link href="http://xiexiao.com"/>
-  <updated>2013-12-28T06:33:13.621Z</updated>
+  <updated>2014-01-20T09:19:11.922Z</updated>
   <id>http://xiexiao.com/</id>
   <author>
     <name><![CDATA[谢小漫]]></name>
     <email><![CDATA[ilikethiscat@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[开始学习Go]]></title>
+    <link href="http://xiexiao.com/2014/01/20/golang-start/"/>
+    <id>http://xiexiao.com/2014/01/20/golang-start/</id>
+    <published>2014-01-20T07:12:17.000Z</published>
+    <updated>2014-01-20T09:18:03.678Z</updated>
+    <content type="html"><![CDATA[<p>上星期开始，了解了一下Go，正如介绍</p>
+<blockquote>
+<p>Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.</p>
+</blockquote>
+<p>Go确实是牛，除了开发者牛，后台牛。</p>
+<p>我觉得最重要的一点是：这是开发语言使用者在开发了几十年后，重新思考了开发语言。</p>
+<p>比如这不是基于VM的语言，Java，C#，Python，Ruby这些都是基于VM的，而Go不是，确提供了许多的语法糖。</p>
+<p>同时还提供了goroutines，并行的goroutines。</p>
+<p>还有很好用的go get, go test等代码管理调试命令。</p>
+<p>先进的包管理使入门变得更轻松了。</p>
+<p>推荐学习一下Go，本人2014年的目标之一就是学习和使用Go。</p>
+]]></content>
+    <category scheme="http://xiexiao.com/tags/Go/" term="Go"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[小说工匠]]></title>
     <link href="http://xiexiao.com/2013/12/28/craftsman-2013/"/>

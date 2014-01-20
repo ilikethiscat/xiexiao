@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://xiexiao.com/2014/01/20/golang-start/</loc>
+    <lastmod>2014-01-20T09:18:03.678Z</lastmod>
+  </url>
+  <url>
     <loc>http://xiexiao.com/2013/12/28/craftsman-2013/</loc>
     <lastmod>2013-12-28T06:32:57.101Z</lastmod>
   </url>
