@@ -3,13 +3,163 @@
   <title><![CDATA[谢小漫]]></title>
   <link href="http://xiexiao.com/atom.xml" rel="self"/>
   <link href="http://xiexiao.com"/>
-  <updated>2014-01-20T09:19:11.922Z</updated>
+  <updated>2014-07-17T10:20:22.449Z</updated>
   <id>http://xiexiao.com/</id>
   <author>
     <name><![CDATA[谢小漫]]></name>
     <email><![CDATA[ilikethiscat@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[Docker基础指南]]></title>
+    <link href="http://xiexiao.com/2014/07/17/docker_intro/"/>
+    <id>http://xiexiao.com/2014/07/17/docker_intro/</id>
+    <published>2014-07-17T10:13:30.000Z</published>
+    <updated>2014-07-17T10:20:12.784Z</updated>
+    <content type="html"><![CDATA[<h1>Docker介绍</h1>
+<p>Docker作为一个容器运行，运行一个unix进程与服务器隔离提供里强大的安全保障，你的软件可以重复地运行在任何地方，因为它的容器包含了所有的环境依赖关系！</p>
+<p>Docker.io 是轻量级的“容器引擎+映像仓库”，在LXC（linux轻量级容器）的基础上构建，可以运行任何应用程序。<br>docker.io的核心层由以下几个部分组成:</p>
+<ul>
+<li>可执行程序，“/usr/bin/docker”</li>
+<li>docker.io网站上有一系列创建好的操作系统和应用程序映像</li>
+<li>AUFS（另一个统一文件系统）来实现文件系统的快照，文件变化，控制只读或读写的需求。</li>
+<li>LXC（Linux轻量级容器）</li>
+<li>Cgroups（各种资源和命名空间的管理）</li>
+</ul>
+<h1>安装</h1>
+<p>以下以Linux版本：<code>CentOS release 6.5 (Final)</code>，管理员用户运行</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">cat</span> /etc/centos-release
+</pre></td></tr></table></figure>
+
+<p>安装docker-io</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">yum</span> <span class="literal">-</span><span class="comment">y</span> <span class="comment">install</span> <span class="comment">docker</span>-<span class="comment">io</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">enablerepo=epel
+</pre></td></tr></table></figure>
+
+<p>安装成功后，运行命令得到相关的介绍</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">docker</span>
+<span class="title">docker</span> -v
+</pre></td></tr></table></figure>
+
+<p>安装的版本是：<code>Docker version 1.0.0, build 63fe64c/1.0.0</code></p>
+<p>配置服务运行和自动启动</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>service docker <span class="operator"><span class="keyword">start</span>
+chkconfig docker <span class="keyword">on</span>
+</pre></td></tr></table></figure>
+
+<p>需要拉取images，拉取基本的CentOS的images</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">docker</span> pull centos
+</pre></td></tr></table></figure>
+
+<p>拉取完成后，运行命令查看images</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">docker</span> images
+</pre></td></tr></table></figure>
+
+<p>得到列表显示</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="type">REPOSITORY</span>          <span class="type">TAG</span>                 <span class="type">IMAGE</span> <span class="type">ID</span>            <span class="type">CREATED</span>             <span class="type">VIRTUAL</span> <span class="type">SIZE</span>
+<span class="title">centos</span>              centos7             <span class="number">1</span>a7dc42f78ba        <span class="number">7</span> days ago          <span class="number">236.4</span> <span class="type">MB</span>
+<span class="title">centos</span>              latest              <span class="number">1</span>a7dc42f78ba        <span class="number">7</span> days ago          <span class="number">236.4</span> <span class="type">MB</span>
+<span class="title">centos</span>              centos6             cd934e0010d5        <span class="number">8</span> days ago          <span class="number">206.9</span> <span class="type">MB</span>
+</pre></td></tr></table></figure>
+
+<p>基础命令列表，显示image的版本，运行image中的top命令，搜索images</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="title">docker</span> run centos:centos7 cat /etc/centos-release
+<span class="title">docker</span> run centos:centos7 /usr/bin/top
+<span class="title">docker</span> search centos
+</pre></td></tr></table></figure>
+
+<p>进入image中的命令模式，使用<code>exit</code>命令退出</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">docker</span> <span class="comment">run</span> <span class="literal">-</span><span class="comment">i</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">centos:centos7</span> <span class="comment">/bin/bash
+</pre></td></tr></table></figure>
+
+<h1>开启工作进程</h1>
+<p>开启一个长时间工作进程</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">JOB=$(docker</span> <span class="comment">run</span> <span class="literal">-</span><span class="comment">d</span> <span class="comment">centos:centos7</span> <span class="comment">/bin/sh</span> <span class="literal">-</span><span class="comment">c</span> <span class="comment">"while</span> <span class="comment">true;</span> <span class="comment">do</span> <span class="comment">echo</span> <span class="comment">Hello</span> <span class="comment">world;</span> <span class="comment">sleep</span> <span class="comment">1;</span> <span class="comment">done")
+</pre></td></tr></table></figure>
+
+<p>查看这个工作进程的日志</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">docker</span> logs <span class="variable">$JOB</span>
+</pre></td></tr></table></figure>
+
+<p>杀死进程，也可以先用后一条命名查看容器id，通过4位+的容器id来kill。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">docker</span> kill <span class="variable">$JOB</span>
+</pre></td></tr></table></figure>
+
+<p>查看所有运行中的容器</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">docker</span> ps
+</pre></td></tr></table></figure>
+
+<h1>制作自己的image</h1>
+<p>这里以制作带nc命令的centos7举例，后边这个images有用，进入某个版本的image的控制台</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">docker</span> <span class="comment">run</span> <span class="literal">-</span><span class="comment">i</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">centos:centos7</span> <span class="comment">/bin/bash
+</pre></td></tr></table></figure>
+
+<p>在image中安装nc，并确认安装成功</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">yum</span> -y install nc
+</pre></td></tr></table></figure>
+
+<p>之后退出这个控制台，查找这个image的Container ID:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">docker</span> ps -a
+</pre></td></tr></table></figure>
+
+<p>制作image并命名为centos7_nc，其中dbb52为上一个命令中得到的ID前四位</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>docker <span class="operator"><span class="keyword">commit</span> dbb52 centos7_nc
+</pre></td></tr></table></figure>
+
+<p><code>docker images</code>可以确认image已经成功，然后确认这个image中有nc命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">docker</span> run centos7_nc /bin/nc
+</pre></td></tr></table></figure>
+
+<h1>为服务绑定一个TCP端口</h1>
+<p>为容器绑定4444端口，并告诉网络监听4444</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">JOB=$(docker</span> <span class="comment">run</span> <span class="literal">-</span><span class="comment">d</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">4444</span> <span class="comment">centos7_nc</span> <span class="comment">/bin/nc</span> <span class="literal">-</span><span class="comment">l</span> <span class="comment">4444)
+</pre></td></tr></table></figure>
+
+<p>查看容器用的公共端口，这个是对外的端口</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="constant">PORT</span>=<span class="variable">$(</span>docker port <span class="variable">$JOB</span> <span class="number">4444</span> | awk -<span class="constant">F</span><span class="symbol">:</span> <span class="string">'{ print $2 }'</span>)
+</pre></td></tr></table></figure>
+
+<p>连接公共端口</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">echo</span> hello world | nc <span class="number">127.0.0.1</span> <span class="variable">$PORT</span>
+</pre></td></tr></table></figure>
+
+<p>确认网络连接是否工作，程序运行ok</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">docker</span> logs <span class="variable">$JOB</span>
+</pre></td></tr></table></figure>
+
+<p>END.</p>
+]]></content>
+    <category scheme="http://xiexiao.com/tags/Docker/" term="Docker"/>
+    <category scheme="http://xiexiao.com/tags/CentOS/" term="CentOS"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[开始学习Go]]></title>
     <link href="http://xiexiao.com/2014/01/20/golang-start/"/>
