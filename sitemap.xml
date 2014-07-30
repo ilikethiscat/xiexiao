@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://xiexiao.com/2014/07/29/scala-setup/</loc>
+    <lastmod>2014-07-30T06:02:42.177Z</lastmod>
+  </url>
+  <url>
     <loc>http://xiexiao.com/2014/07/17/docker_intro/</loc>
     <lastmod>2014-07-17T10:20:12.784Z</lastmod>
   </url>

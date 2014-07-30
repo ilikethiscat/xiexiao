@@ -3,13 +3,134 @@
   <title><![CDATA[谢小漫]]></title>
   <link href="http://xiexiao.com/atom.xml" rel="self"/>
   <link href="http://xiexiao.com"/>
-  <updated>2014-07-17T10:20:22.449Z</updated>
+  <updated>2014-07-30T06:02:58.353Z</updated>
   <id>http://xiexiao.com/</id>
   <author>
     <name><![CDATA[谢小漫]]></name>
     <email><![CDATA[ilikethiscat@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[Scala安装指南]]></title>
+    <link href="http://xiexiao.com/2014/07/29/scala-setup/"/>
+    <id>http://xiexiao.com/2014/07/29/scala-setup/</id>
+    <published>2014-07-29T07:56:30.000Z</published>
+    <updated>2014-07-30T06:02:42.177Z</updated>
+    <content type="html"><![CDATA[<h1>Scala安装指南</h1>
+<h2>确认Java已经安装</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">java</span> -version
+</pre></td></tr></table></figure>
+
+<h2>下载最新版本的Scala</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="label">http:</span>//www<span class="preprocessor">.scala</span>-lang<span class="preprocessor">.org</span>/downloads
+</pre></td></tr></table></figure>
+
+<p>安装</p>
+<h2>设置环境变量</h2>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>Variable</th>
+<th>Value (example)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unix</td>
+<td>$SCALA_HOME</td>
+<td>/usr/local/share/scala</td>
+</tr>
+<tr>
+<td></td>
+<td>$PATH</td>
+<td>$PATH:$SCALA_HOME/bin</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>%SCALA_HOME%</td>
+<td>c:\Progra~1\Scala</td>
+</tr>
+<tr>
+<td></td>
+<td>%PATH%</td>
+<td>%PATH%;%SCALA_HOME%\bin</td>
+</tr>
+</tbody>
+</table>
+<h2>测试是否正常</h2>
+<p>查看当前scala的版本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">scala</span> -version
+</pre></td></tr></table></figure>
+
+<p>进入交互shell</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="attribute">scala
+</pre></td></tr></table></figure>
+
+<h2>Hello, world!</h2>
+<p>测试例子使用代码</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>object <span class="constant">HelloWorld</span> {
+  <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(<span class="symbol">args:</span> <span class="constant">Array</span>[<span class="constant">String</span>])</span> </span>{
+    println(<span class="string">"Hello, world!"</span>)
+  }
+}
+</pre></td></tr></table></figure>
+
+<p>交互方式输入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre>&gt; scala
+<span class="constant">This</span> is a <span class="constant">Scala</span> shell.
+<span class="constant">Type</span> <span class="keyword">in</span> expressions to have them evaluated.
+<span class="constant">Type</span> <span class="symbol">:help</span> <span class="keyword">for</span> more information.
+scala&gt; object <span class="constant">HelloWorld</span> {
+    |   <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(<span class="symbol">args:</span> <span class="constant">Array</span>[<span class="constant">String</span>])</span> </span>{
+    |     println(<span class="string">"Hello, world!"</span>)
+    |   }
+    | }
+<span class="keyword">defined</span> <span class="class"><span class="keyword">module</span> <span class="title">HelloWorld</span></span>
+scala&gt; <span class="constant">HelloWorld</span>.main(null)
+<span class="constant">Hello</span>, world!
+scala&gt;<span class="symbol">:q</span>
+&gt;
+</pre></td></tr></table></figure>
+
+<p>编译方式，编译</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="blockquote">&gt; scalac HelloWorld.scala</span>
+</pre></td></tr></table></figure>
+
+<p>然后运行</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="blockquote">&gt; scala HelloWorld</span>
+</pre></td></tr></table></figure>
+
+<p>END.</p>
+]]></content>
+    <category scheme="http://xiexiao.com/tags/Scala/" term="Scala"/>
+    <category scheme="http://xiexiao.com/tags/Java/" term="Java"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Docker基础指南]]></title>
     <link href="http://xiexiao.com/2014/07/17/docker_intro/"/>
