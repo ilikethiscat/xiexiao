@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://xiexiao.com/2014/08/07/yum-get-error/</loc>
+    <lastmod>2014-08-08T02:54:29.403Z</lastmod>
+  </url>
+  <url>
+    <loc>http://xiexiao.com/2014/08/08/build-Hadoop/</loc>
+    <lastmod>2014-08-08T02:48:19.166Z</lastmod>
+  </url>
+  <url>
+    <loc>http://xiexiao.com/2013/12/25/minimal-centos/</loc>
+    <lastmod>2014-08-08T02:46:43.655Z</lastmod>
+  </url>
+  <url>
     <loc>http://xiexiao.com/2014/07/29/scala-setup/</loc>
     <lastmod>2014-07-30T06:02:42.177Z</lastmod>
   </url>
@@ -23,10 +35,6 @@
   <url>
     <loc>http://xiexiao.com/2013/12/26/ol3js-when-start/</loc>
     <lastmod>2013-12-26T04:10:23.355Z</lastmod>
-  </url>
-  <url>
-    <loc>http://xiexiao.com/2013/12/25/minimal-centos/</loc>
-    <lastmod>2013-12-25T01:54:23.792Z</lastmod>
   </url>
   <url>
     <loc>http://xiexiao.com/2013/12/24/dig-a-blog/</loc>

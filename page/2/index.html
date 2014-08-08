@@ -3,20 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>挖坑记 | 谢小漫</title>
+  <title>第 2 页 | 谢小漫</title>
   <meta name="author" content="谢小漫">
-  
-  <meta name="description" content="本blog使用Hexo.相关的建立方法请自行google一下。
-Hexo是个不错的程序，正如其自身的介绍:
-
-A fast, simple &amp; powerful blog framework, powered by Node.js.
-
-安装Hexo的过程，也是对Node.js的了解，Node">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="挖坑记"/>
+  
   <meta property="og:site_name" content="谢小漫"/>
 
   
@@ -51,79 +44,34 @@ A fast, simple &amp; powerful blog framework, powered by Node.js.
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-12-24T11:42:17.000Z"><a href="/2013/12/24/dig-a-blog/">12月 24 2013</a></time>
+        <time datetime="2013-12-24T06:42:17.000Z"><a href="/2013/12/24/hello-world/">12月 24 2013</a></time>
       
       
   
-    <h1 class="title">挖坑记</h1>
+    <h1 class="title"><a href="/2013/12/24/hello-world/">Hello World</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>本blog使用<a href="https://github.com/tommy351/hexo/" target="_blank">Hexo</a>.<br>相关的建立方法请自行google一下。</p>
-<p>Hexo是个不错的程序，正如其自身的介绍:</p>
-<blockquote>
-<p>A fast, simple &amp; powerful blog framework, powered by Node.js.</p>
-</blockquote>
-<p>安装Hexo的过程，也是对Node.js的了解，Node.js确实足够的简单，一个.exe文件。<br>还有包管理npm，官网上的<a href="http://nodejs.org/dist/" target="_blank">release files</a>就提供了node.exe的下载和npm包管理的文件包。</p>
-<p>建立文件夹，然后解压node.exe，解压npm-1.3.9.zip到主目录下。<br>目录结构: D:\nodejs\</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre><span class="title">node</span>.exe
-<span class="title">npm</span>.cmd
-<span class="title">node_modules</span>\
-</pre></td></tr></table></figure>
-
-<p>设置一下npm的一下配置目录：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>npm config set prefix "D:<span class="command">\nodejs</span><span class="command">\npm</span>-global"
-npm config set cache "D:<span class="command">\nodejs</span><span class="command">\npm</span>-cache"
-</pre></td></tr></table></figure>
-
-<p>设置一下Path的环境变量，增加一下D:\nodejs\node-global;D:\nodejs\;就可以了。</p>
-<p>设置完成后，Hexo的安装就非常简单了:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">npm</span> install -g hexo
-</pre></td></tr></table></figure>
-
-<p>然后就是新的一个cmd窗口，建立目录blog1，主要命令是:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre><span class="title">hexo</span> init <span class="comment">#建立网站</span>
-hexo generate <span class="comment">#生成内容</span>
-hexo server <span class="comment">#预览网站, 打开http://localhost:4000</span>
-</pre></td></tr></table></figure>
-
-<p>配置文件在_config.yml，相关配置请自行google。<br>需要配置github的地址等信息。<br>发布命令是:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> deploy
-</pre></td></tr></table></figure>
-
-<p>然后输入github帐号和密码, 我的windows下不会提示输入，摸瞎输入后，成功部署。<br>CNAME的域名绑定的话，就是在deploy之前，创建一个CNAME文件，写入域名，放到public目录下。<br>到域名DNS设置里边设置一个CNAME指向你的x.github.io。</p>
-<p>然后就是要熟悉一下Markdown的语法了。</p>
-<p>挖坑记录完毕。</p>
+        <p>Hello world!</p>
+<p>你好，世界。</p>
+<p>公元2013年12月24日，重新挖一个坑。</p>
+<p>慢慢把旧坑里边的日志迁移过来吧。</p>
+<p>世界的一切都安好，一如过去的岁月流淌在今日平淡生活中。</p>
 
       
     </div>
     <footer>
       
         
-        
-  
-  <div class="tags">
-    <a href="/tags/hexo/">hexo</a>
-  </div>
-
         
       
       <div class="clearfix"></div>
@@ -132,16 +80,15 @@ hexo server <span class="comment">#预览网站, 打开http://localhost:4000</sp
 </article>
 
 
-<section id="comment">
-  <h1 class="title">留言</h1>
 
+
+<nav id="pagination">
   
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
+    <a href="/" class="alignleft prev">上一页</a>
   
-</section>
-</div></div>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
@@ -217,7 +164,7 @@ var disqus_shortname = 'xiexiao';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>

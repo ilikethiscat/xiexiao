@@ -51,6 +51,179 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-08-08T02:46:17.000Z"><a href="/2014/08/08/build-Hadoop/">8月 8 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/08/08/build-Hadoop/">编译Hadoop 2.4.1完整步骤</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3>编译Hadoop 2.4.1完整步骤</h3>
+<p>因为下载的bin包中的lib是32位的，64位的CentOS调用不上，只能自己动手编译一下了。<br>编译挺简单，下载依赖包比较花时间。<br>以下环境都是在CentOS 6.5 Mini。</p>
+<h3>安装jdk</h3>
+<p>下载 server-jre-7u67-linux-x64.gz</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>tar zxf server-jre-7u67-linux-x64.gz -C /opt/
+ln -s jdk1.7.0_67 jdk
+</pre></td></tr></table></figure>
+
+<p>配置<code>vi /etc/profile</code><br>最后添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">export</span> JAVA_HOME=/opt/jdk
+export PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin
+</pre></td></tr></table></figure>
+
+<h3>安装Maven</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>wget http://apache.fayea.com/apache-mirror/maven/maven-3/3.2.2/binaries/apache-maven-3.2.2-bin.tar.gz
+tar zxf apache-maven-3.2.2-bin.tar.gz -C /opt/
+</pre></td></tr></table></figure>
+
+<p>配置<code>vi /etc/profile</code><br>最后添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">export</span> MAVEN_HOME=/opt/apache-maven-<span class="number">3</span>.<span class="number">2</span>.<span class="number">2</span>
+export PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin
+</pre></td></tr></table></figure>
+
+<h3>安装ant</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>wget http://mirror.bit.edu.cn/apache/ant/binaries/apache-ant-1.9.4-bin.tar.gz
+tar zxf apache-ant-1.9.4-bin.tar.gz -C /opt/
+</pre></td></tr></table></figure>
+
+<p>配置<code>vi /etc/profile</code><br>最后添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">export</span> ANT_HOME=/opt/apache-ant-<span class="number">1</span>.<span class="number">9</span>.<span class="number">4</span>
+export PATH=<span class="variable">$PATH</span>:<span class="variable">$ANT_HOME</span>/bin
+</pre></td></tr></table></figure>
+
+<h3>安装项目的系统依赖</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>yum install gcc
+yum install gcc-c++
+yum install autoconf automake libtool cmake
+yum install zlib-devel openssl-devel
+</pre></td></tr></table></figure>
+
+<h3>安装protobuf</h3>
+<p>下载，解压</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>wget https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.gz
+tar zxf protobuf-2.5.0.tar.gz
+cd protobuf-2.5.0
+./configure
+make
+make install
+</pre></td></tr></table></figure>
+
+<h3>下载源代码，解压</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.4.1/hadoop-2.4.1-src.tar.gz
+tar zxf hadoop-2.4.1-src.tar.gz
+</pre></td></tr></table></figure>
+
+<h3>编译Hadoop</h3>
+<p>不编译doc，跳过单元测试</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>cd hadoop-2.4.1-src
+mvn package -Dmaven.javadoc.skip=<span class="literal">true</span> -Pdist,native -DskipTests -Dtar
+</pre></td></tr></table></figure>
+
+<h3>查看编译的64位lib</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>cd hadoop-dist/target/hadoop-2.4.1/lib/native
+objdump -f libhadoop.so
+</pre></td></tr></table></figure>
+
+<p>结果显示是i386:x86-64，这就是64位的lib了。</p>
+<p>END.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-07T04:37:17.000Z"><a href="/2014/08/07/yum-get-error/">8月 7 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/08/07/yum-get-error/">yum安装软件出错</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3>问题</h3>
+<p>yum安装软件<code>yum install wget</code>，报错:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="label">http:</span>//mirrors<span class="preprocessor">.aliyun</span><span class="preprocessor">.com</span>/centos/<span class="number">6.5</span>/updates/x86_64/Packages/coreutils-<span class="number">8.4</span>-<span class="number">31.</span>el6_5<span class="number">.1</span><span class="preprocessor">.x</span>86_64<span class="preprocessor">.rpm</span>: [Errno <span class="number">14</span>] PYCURL ERROR <span class="number">56</span> - <span class="string">"Failure when receiving data from the peer"</span>
+</pre></td></tr></table></figure>
+
+<h3>解决办法</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>yum clean all
+yum makecache
+</pre></td></tr></table></figure>
+
+<p>重新执行安装命令，就可以。</p>
+<p>END.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-07-29T07:56:30.000Z"><a href="/2014/07/29/scala-setup/">7月 29 2014</a></time>
       
       
@@ -689,45 +862,11 @@ hexo server <span class="comment">#预览网站, 打开http://localhost:4000</sp
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-24T06:42:17.000Z"><a href="/2013/12/24/hello-world/">12月 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/12/24/hello-world/">Hello World</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Hello world!</p>
-<p>你好，世界。</p>
-<p>公元2013年12月24日，重新挖一个坑。</p>
-<p>慢慢把旧坑里边的日志迁移过来吧。</p>
-<p>世界的一切都安好，一如过去的岁月流淌在今日平淡生活中。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
+  
+    <a href="/page/2/" class="alignright next">下一页</a>
   
   <div class="clearfix"></div>
 </nav></div></div>
@@ -746,13 +885,15 @@ hexo server <span class="comment">#预览网站, 打开http://localhost:4000</sp
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/CentOS/">CentOS</a><small>2</small></li>
+    <li><a href="/tags/CentOS/">CentOS</a><small>3</small></li>
   
     <li><a href="/tags/Docker/">Docker</a><small>1</small></li>
   
     <li><a href="/tags/GIS/">GIS</a><small>1</small></li>
   
     <li><a href="/tags/Go/">Go</a><small>1</small></li>
+  
+    <li><a href="/tags/Hadoop/">Hadoop</a><small>1</small></li>
   
     <li><a href="/tags/Java/">Java</a><small>1</small></li>
   
@@ -761,6 +902,8 @@ hexo server <span class="comment">#预览网站, 打开http://localhost:4000</sp
     <li><a href="/tags/hexo/">hexo</a><small>1</small></li>
   
     <li><a href="/tags/ol3/">ol3</a><small>1</small></li>
+  
+    <li><a href="/tags/yum/">yum</a><small>1</small></li>
   
     <li><a href="/tags/小说工匠/">小说工匠</a><small>1</small></li>
   

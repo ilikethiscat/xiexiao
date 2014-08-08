@@ -3,13 +3,143 @@
   <title><![CDATA[谢小漫]]></title>
   <link href="http://xiexiao.com/atom.xml" rel="self"/>
   <link href="http://xiexiao.com"/>
-  <updated>2014-07-30T06:02:58.353Z</updated>
+  <updated>2014-08-08T02:57:53.859Z</updated>
   <id>http://xiexiao.com/</id>
   <author>
     <name><![CDATA[谢小漫]]></name>
     <email><![CDATA[ilikethiscat@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[编译Hadoop 2.4.1完整步骤]]></title>
+    <link href="http://xiexiao.com/2014/08/08/build-Hadoop/"/>
+    <id>http://xiexiao.com/2014/08/08/build-Hadoop/</id>
+    <published>2014-08-08T02:46:17.000Z</published>
+    <updated>2014-08-08T02:48:19.166Z</updated>
+    <content type="html"><![CDATA[<h3>编译Hadoop 2.4.1完整步骤</h3>
+<p>因为下载的bin包中的lib是32位的，64位的CentOS调用不上，只能自己动手编译一下了。<br>编译挺简单，下载依赖包比较花时间。<br>以下环境都是在CentOS 6.5 Mini。</p>
+<h3>安装jdk</h3>
+<p>下载 server-jre-7u67-linux-x64.gz</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>tar zxf server-jre-7u67-linux-x64.gz -C /opt/
+ln -s jdk1.7.0_67 jdk
+</pre></td></tr></table></figure>
+
+<p>配置<code>vi /etc/profile</code><br>最后添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">export</span> JAVA_HOME=/opt/jdk
+export PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin
+</pre></td></tr></table></figure>
+
+<h3>安装Maven</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>wget http://apache.fayea.com/apache-mirror/maven/maven-3/3.2.2/binaries/apache-maven-3.2.2-bin.tar.gz
+tar zxf apache-maven-3.2.2-bin.tar.gz -C /opt/
+</pre></td></tr></table></figure>
+
+<p>配置<code>vi /etc/profile</code><br>最后添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">export</span> MAVEN_HOME=/opt/apache-maven-<span class="number">3</span>.<span class="number">2</span>.<span class="number">2</span>
+export PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin
+</pre></td></tr></table></figure>
+
+<h3>安装ant</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>wget http://mirror.bit.edu.cn/apache/ant/binaries/apache-ant-1.9.4-bin.tar.gz
+tar zxf apache-ant-1.9.4-bin.tar.gz -C /opt/
+</pre></td></tr></table></figure>
+
+<p>配置<code>vi /etc/profile</code><br>最后添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">export</span> ANT_HOME=/opt/apache-ant-<span class="number">1</span>.<span class="number">9</span>.<span class="number">4</span>
+export PATH=<span class="variable">$PATH</span>:<span class="variable">$ANT_HOME</span>/bin
+</pre></td></tr></table></figure>
+
+<h3>安装项目的系统依赖</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>yum install gcc
+yum install gcc-c++
+yum install autoconf automake libtool cmake
+yum install zlib-devel openssl-devel
+</pre></td></tr></table></figure>
+
+<h3>安装protobuf</h3>
+<p>下载，解压</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>wget https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.gz
+tar zxf protobuf-2.5.0.tar.gz
+cd protobuf-2.5.0
+./configure
+make
+make install
+</pre></td></tr></table></figure>
+
+<h3>下载源代码，解压</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.4.1/hadoop-2.4.1-src.tar.gz
+tar zxf hadoop-2.4.1-src.tar.gz
+</pre></td></tr></table></figure>
+
+<h3>编译Hadoop</h3>
+<p>不编译doc，跳过单元测试</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>cd hadoop-2.4.1-src
+mvn package -Dmaven.javadoc.skip=<span class="literal">true</span> -Pdist,native -DskipTests -Dtar
+</pre></td></tr></table></figure>
+
+<h3>查看编译的64位lib</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>cd hadoop-dist/target/hadoop-2.4.1/lib/native
+objdump -f libhadoop.so
+</pre></td></tr></table></figure>
+
+<p>结果显示是i386:x86-64，这就是64位的lib了。</p>
+<p>END.</p>
+]]></content>
+    <category scheme="http://xiexiao.com/tags/Hadoop/" term="Hadoop"/>
+    <category scheme="http://xiexiao.com/tags/CentOS/" term="CentOS"/>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[yum安装软件出错]]></title>
+    <link href="http://xiexiao.com/2014/08/07/yum-get-error/"/>
+    <id>http://xiexiao.com/2014/08/07/yum-get-error/</id>
+    <published>2014-08-07T04:37:17.000Z</published>
+    <updated>2014-08-08T02:54:29.403Z</updated>
+    <content type="html"><![CDATA[<h3>问题</h3>
+<p>yum安装软件<code>yum install wget</code>，报错:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="label">http:</span>//mirrors<span class="preprocessor">.aliyun</span><span class="preprocessor">.com</span>/centos/<span class="number">6.5</span>/updates/x86_64/Packages/coreutils-<span class="number">8.4</span>-<span class="number">31.</span>el6_5<span class="number">.1</span><span class="preprocessor">.x</span>86_64<span class="preprocessor">.rpm</span>: [Errno <span class="number">14</span>] PYCURL ERROR <span class="number">56</span> - <span class="string">"Failure when receiving data from the peer"</span>
+</pre></td></tr></table></figure>
+
+<h3>解决办法</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>yum clean all
+yum makecache
+</pre></td></tr></table></figure>
+
+<p>重新执行安装命令，就可以。</p>
+<p>END.</p>
+]]></content>
+    <category scheme="http://xiexiao.com/tags/yum/" term="yum"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Scala安装指南]]></title>
     <link href="http://xiexiao.com/2014/07/29/scala-setup/"/>
@@ -347,7 +477,7 @@ chkconfig docker <span class="keyword">on</span>
     <link href="http://xiexiao.com/2013/12/25/minimal-centos/"/>
     <id>http://xiexiao.com/2013/12/25/minimal-centos/</id>
     <published>2013-12-25T01:37:17.000Z</published>
-    <updated>2013-12-25T01:54:23.792Z</updated>
+    <updated>2014-08-08T02:46:43.655Z</updated>
     <content type="html"><![CDATA[<h3>1. 下载安装文件</h3>
 <p>download CentOS-6.5-x86_64-minimal.iso file from <a href="http://mirrors.163.com/centos" target="_blank">mirrors.163.com/centos</a></p>
 <h3>2. 安装</h3>

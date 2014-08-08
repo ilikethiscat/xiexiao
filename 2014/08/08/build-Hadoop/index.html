@@ -3,20 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>挖坑记 | 谢小漫</title>
+  <title>编译Hadoop 2.4.1完整步骤 | 谢小漫</title>
   <meta name="author" content="谢小漫">
   
-  <meta name="description" content="本blog使用Hexo.相关的建立方法请自行google一下。
-Hexo是个不错的程序，正如其自身的介绍:
-
-A fast, simple &amp; powerful blog framework, powered by Node.js.
-
-安装Hexo的过程，也是对Node.js的了解，Node">
+  <meta name="description" content="编译Hadoop 2.4.1完整步骤
+因为下载的bin包中的lib是32位的，64位的CentOS调用不上，只能自己动手编译一下了。编译挺简单，下载依赖包比较花时间。以下环境都是在CentOS 6.5 Mini。
+安装jdk
+下载 server-jre-7u67-linux-x64.gz
+1
+2
+t">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="挖坑记"/>
+  <meta property="og:title" content="编译Hadoop 2.4.1完整步骤"/>
   <meta property="og:site_name" content="谢小漫"/>
 
   
@@ -57,61 +58,112 @@ A fast, simple &amp; powerful blog framework, powered by Node.js.
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-12-24T11:42:17.000Z"><a href="/2013/12/24/dig-a-blog/">12月 24 2013</a></time>
+        <time datetime="2014-08-08T02:46:17.000Z"><a href="/2014/08/08/build-Hadoop/">8月 8 2014</a></time>
       
       
   
-    <h1 class="title">挖坑记</h1>
+    <h1 class="title">编译Hadoop 2.4.1完整步骤</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>本blog使用<a href="https://github.com/tommy351/hexo/" target="_blank">Hexo</a>.<br>相关的建立方法请自行google一下。</p>
-<p>Hexo是个不错的程序，正如其自身的介绍:</p>
-<blockquote>
-<p>A fast, simple &amp; powerful blog framework, powered by Node.js.</p>
-</blockquote>
-<p>安装Hexo的过程，也是对Node.js的了解，Node.js确实足够的简单，一个.exe文件。<br>还有包管理npm，官网上的<a href="http://nodejs.org/dist/" target="_blank">release files</a>就提供了node.exe的下载和npm包管理的文件包。</p>
-<p>建立文件夹，然后解压node.exe，解压npm-1.3.9.zip到主目录下。<br>目录结构: D:\nodejs\</p>
+        <h3>编译Hadoop 2.4.1完整步骤</h3>
+<p>因为下载的bin包中的lib是32位的，64位的CentOS调用不上，只能自己动手编译一下了。<br>编译挺简单，下载依赖包比较花时间。<br>以下环境都是在CentOS 6.5 Mini。</p>
+<h3>安装jdk</h3>
+<p>下载 server-jre-7u67-linux-x64.gz</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>tar zxf server-jre-7u67-linux-x64.gz -C /opt/
+ln -s jdk1.7.0_67 jdk
+</pre></td></tr></table></figure>
+
+<p>配置<code>vi /etc/profile</code><br>最后添加</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">export</span> JAVA_HOME=/opt/jdk
+export PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin
+</pre></td></tr></table></figure>
+
+<h3>安装Maven</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>wget http://apache.fayea.com/apache-mirror/maven/maven-3/3.2.2/binaries/apache-maven-3.2.2-bin.tar.gz
+tar zxf apache-maven-3.2.2-bin.tar.gz -C /opt/
+</pre></td></tr></table></figure>
+
+<p>配置<code>vi /etc/profile</code><br>最后添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">export</span> MAVEN_HOME=/opt/apache-maven-<span class="number">3</span>.<span class="number">2</span>.<span class="number">2</span>
+export PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin
+</pre></td></tr></table></figure>
+
+<h3>安装ant</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>wget http://mirror.bit.edu.cn/apache/ant/binaries/apache-ant-1.9.4-bin.tar.gz
+tar zxf apache-ant-1.9.4-bin.tar.gz -C /opt/
+</pre></td></tr></table></figure>
+
+<p>配置<code>vi /etc/profile</code><br>最后添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">export</span> ANT_HOME=/opt/apache-ant-<span class="number">1</span>.<span class="number">9</span>.<span class="number">4</span>
+export PATH=<span class="variable">$PATH</span>:<span class="variable">$ANT_HOME</span>/bin
+</pre></td></tr></table></figure>
+
+<h3>安装项目的系统依赖</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="title">node</span>.exe
-<span class="title">npm</span>.cmd
-<span class="title">node_modules</span>\
+4
+</pre></td><td class="code"><pre>yum install gcc
+yum install gcc-c++
+yum install autoconf automake libtool cmake
+yum install zlib-devel openssl-devel
 </pre></td></tr></table></figure>
 
-<p>设置一下npm的一下配置目录：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>npm config set prefix "D:<span class="command">\nodejs</span><span class="command">\npm</span>-global"
-npm config set cache "D:<span class="command">\nodejs</span><span class="command">\npm</span>-cache"
-</pre></td></tr></table></figure>
-
-<p>设置一下Path的环境变量，增加一下D:\nodejs\node-global;D:\nodejs\;就可以了。</p>
-<p>设置完成后，Hexo的安装就非常简单了:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">npm</span> install -g hexo
-</pre></td></tr></table></figure>
-
-<p>然后就是新的一个cmd窗口，建立目录blog1，主要命令是:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<h3>安装protobuf</h3>
+<p>下载，解压</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="title">hexo</span> init <span class="comment">#建立网站</span>
-hexo generate <span class="comment">#生成内容</span>
-hexo server <span class="comment">#预览网站, 打开http://localhost:4000</span>
+4
+5
+6
+</pre></td><td class="code"><pre>wget https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.gz
+tar zxf protobuf-2.5.0.tar.gz
+cd protobuf-2.5.0
+./configure
+make
+make install
 </pre></td></tr></table></figure>
 
-<p>配置文件在_config.yml，相关配置请自行google。<br>需要配置github的地址等信息。<br>发布命令是:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">hexo</span> deploy
+<h3>下载源代码，解压</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.4.1/hadoop-2.4.1-src.tar.gz
+tar zxf hadoop-2.4.1-src.tar.gz
 </pre></td></tr></table></figure>
 
-<p>然后输入github帐号和密码, 我的windows下不会提示输入，摸瞎输入后，成功部署。<br>CNAME的域名绑定的话，就是在deploy之前，创建一个CNAME文件，写入域名，放到public目录下。<br>到域名DNS设置里边设置一个CNAME指向你的x.github.io。</p>
-<p>然后就是要熟悉一下Markdown的语法了。</p>
-<p>挖坑记录完毕。</p>
+<h3>编译Hadoop</h3>
+<p>不编译doc，跳过单元测试</p>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>cd hadoop-2.4.1-src
+mvn package -Dmaven.javadoc.skip=<span class="literal">true</span> -Pdist,native -DskipTests -Dtar
+</pre></td></tr></table></figure>
+
+<h3>查看编译的64位lib</h3>
+<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>cd hadoop-dist/target/hadoop-2.4.1/lib/native
+objdump -f libhadoop.so
+</pre></td></tr></table></figure>
+
+<p>结果显示是i386:x86-64，这就是64位的lib了。</p>
+<p>END.</p>
 
       
     </div>
@@ -121,7 +173,7 @@ hexo server <span class="comment">#预览网站, 打开http://localhost:4000</sp
         
   
   <div class="tags">
-    <a href="/tags/hexo/">hexo</a>
+    <a href="/tags/Hadoop/">Hadoop</a>, <a href="/tags/CentOS/">CentOS</a>
   </div>
 
         
