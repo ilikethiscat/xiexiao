@@ -3,13 +3,38 @@
   <title><![CDATA[谢小漫]]></title>
   <link href="http://xiexiao.com/atom.xml" rel="self"/>
   <link href="http://xiexiao.com"/>
-  <updated>2014-08-08T02:57:53.859Z</updated>
+  <updated>2014-08-15T09:42:06.183Z</updated>
   <id>http://xiexiao.com/</id>
   <author>
     <name><![CDATA[谢小漫]]></name>
     <email><![CDATA[ilikethiscat@gmail.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[OSC源创会-珠海]]></title>
+    <link href="http://xiexiao.com/2014/08/15/OSC-2014/"/>
+    <id>http://xiexiao.com/2014/08/15/OSC-2014/</id>
+    <published>2014-08-15T09:30:30.000Z</published>
+    <updated>2014-08-15T09:41:56.179Z</updated>
+    <content type="html"><![CDATA[<p>上周末的源创会总结。</p>
+<h3>免责声明</h3>
+<p>以下仅为个人观点，如有误会请谅解。</p>
+<h2>goparsec库</h2>
+<p>刘老师总是玩高大上的东西。这次的这个小库虽小，但是应该实用。<br>介绍的时候一直是吐槽<code>Go没有泛型</code>，3+次吐槽。<br>才写了5k+ Go代码的，也深深的觉得没有泛型太难受了。<br>goparsec能干什么：写语法解析。可以写Markdown的内容解析，也可以写SQL解析器。</p>
+<h2>SequoiaDB数据库</h2>
+<p>这是广告，这是广告，这是广告。</p>
+<h2>Docker</h2>
+<p>CentOS下玩过Docker，太简单上手了。<br>再来听这个主题，受益很多：Docker里边的ssh还不能放到外边来访问，Docker这货还有安全问题。<br>Docker不错，估计以后可以拿来整开发的环境。<br>还有<a href="https://github.com/dockercn/docker-hub" target="_blank">Docker hub</a>这个可以推荐。<br>觉得这个主题是底层的也有讲到一些，很有收益。</p>
+<h2>OpenStack社区</h2>
+<p>小眼那个迷离。主题不错，介绍了OpenStack社区，怎么为OpenStack提交代码。<br>那个代码提交多审核的机制很妙：多个自动编译通过，代码review通过，才能提交到主干中。<br>浏览过OpenStack的Github，这货是有很多个模块的东西，感觉太难下嘴啃了。</p>
+<h2>企业视角看见不一样的开源</h2>
+<p>华为参加开源项目的方法和遇到的坑。</p>
+<p>END.</p>
+]]></content>
+    <category scheme="http://xiexiao.com/tags/Go/" term="Go"/>
+    <category scheme="http://xiexiao.com/tags/Docker/" term="Docker"/>
+    <category scheme="http://xiexiao.com/tags/OpenStack/" term="OpenStack"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[编译Hadoop 2.4.1完整步骤]]></title>
     <link href="http://xiexiao.com/2014/08/08/build-Hadoop/"/>
